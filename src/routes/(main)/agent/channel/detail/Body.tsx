@@ -168,7 +168,7 @@ const Body = memo<BodyProps>(
           <div className={styles.actionBar}>
             {hasConfig ? (
               <Button danger icon={<Trash2 size={16} />} type="primary" onClick={onDelete}>
-                {t('integration.removeIntegration')}
+                {t('channel.removeIntegration')}
               </Button>
             ) : (
               <div />
@@ -176,11 +176,11 @@ const Body = memo<BodyProps>(
             <Flexbox horizontal gap={12}>
               {hasConfig && (
                 <Button icon={<RefreshCw size={16} />} loading={testing} onClick={onTestConnection}>
-                  {t('integration.testConnection')}
+                  {t('channel.testConnection')}
                 </Button>
               )}
               <Button icon={<Save size={16} />} loading={saving} type="primary" onClick={onSave}>
-                {t('integration.save')}
+                {t('channel.save')}
               </Button>
             </Flexbox>
           </div>
@@ -191,9 +191,7 @@ const Body = memo<BodyProps>(
               showIcon
               description={saveResult.type === 'error' ? saveResult.errorDetail : undefined}
               type={saveResult.type}
-              title={
-                saveResult.type === 'success' ? t('integration.saved') : t('integration.saveFailed')
-              }
+              title={saveResult.type === 'success' ? t('channel.saved') : t('channel.saveFailed')}
             />
           )}
 
@@ -204,9 +202,7 @@ const Body = memo<BodyProps>(
               description={testResult.type === 'error' ? testResult.errorDetail : undefined}
               type={testResult.type}
               title={
-                testResult.type === 'success'
-                  ? t('integration.testSuccess')
-                  : t('integration.testFailed')
+                testResult.type === 'success' ? t('channel.testSuccess') : t('channel.testFailed')
               }
             />
           )}
@@ -214,7 +210,7 @@ const Body = memo<BodyProps>(
           {hasConfig && provider.webhookMode !== 'auto' && (
             <Flexbox gap={8}>
               <Flexbox horizontal align="center" gap={8}>
-                <span style={{ fontWeight: 600 }}>{t('integration.endpointUrl')}</span>
+                <span style={{ fontWeight: 600 }}>{t('channel.endpointUrl')}</span>
                 {provider.fieldTags.webhook && <Tag>{provider.fieldTags.webhook}</Tag>}
               </Flexbox>
               <Flexbox horizontal gap={8}>
@@ -225,7 +221,7 @@ const Body = memo<BodyProps>(
                     onCopied();
                   }}
                 >
-                  {t('integration.copy')}
+                  {t('channel.copy')}
                 </Button>
               </Flexbox>
               <Alert
@@ -234,7 +230,7 @@ const Body = memo<BodyProps>(
                 message={
                   <Trans
                     components={{ bold: <strong /> }}
-                    i18nKey="integration.endpointUrlHint"
+                    i18nKey="channel.endpointUrlHint"
                     ns="agent"
                     values={{ fieldName: provider.fieldTags.webhook, name: provider.name }}
                   />

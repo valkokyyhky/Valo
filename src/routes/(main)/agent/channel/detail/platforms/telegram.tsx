@@ -15,22 +15,20 @@ export const getTelegramFormItems = (
       <FormPassword
         autoComplete="new-password"
         placeholder={
-          hasConfig
-            ? t('integration.botTokenPlaceholderExisting')
-            : t('integration.botTokenPlaceholderNew')
+          hasConfig ? t('channel.botTokenPlaceholderExisting') : t('channel.botTokenPlaceholderNew')
         }
       />
     ),
-    desc: t('integration.botTokenEncryptedHint'),
-    label: t('integration.botToken'),
+    desc: t('channel.botTokenEncryptedHint'),
+    label: t('channel.botToken'),
     name: 'botToken',
     rules: [{ required: true }],
     tag: provider.fieldTags.token,
   },
   {
-    children: <FormPassword placeholder={t('integration.secretTokenPlaceholder')} />,
-    desc: t('integration.secretTokenHint'),
-    label: t('integration.secretToken'),
+    children: <FormPassword placeholder={t('channel.secretTokenPlaceholder')} />,
+    desc: t('channel.secretTokenHint'),
+    label: t('channel.secretToken'),
     name: 'secretToken',
     tag: provider.fieldTags.secretToken,
   },
@@ -38,8 +36,8 @@ export const getTelegramFormItems = (
     ? ([
         {
           children: <FormInput placeholder="https://xxx.trycloudflare.com" />,
-          desc: t('integration.devWebhookProxyUrlHint'),
-          label: t('integration.devWebhookProxyUrl'),
+          desc: t('channel.devWebhookProxyUrlHint'),
+          label: t('channel.devWebhookProxyUrl'),
           name: 'webhookProxyUrl',
         },
       ] as FormItemProps[])

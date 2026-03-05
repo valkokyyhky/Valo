@@ -11,8 +11,8 @@ export const getLarkFormItems = (
   provider: IntegrationProvider,
 ): FormItemProps[] => [
   {
-    children: <FormInput placeholder={t('integration.applicationIdPlaceholder')} />,
-    label: t('integration.applicationId'),
+    children: <FormInput placeholder={t('channel.applicationIdPlaceholder')} />,
+    label: t('channel.applicationId'),
     name: 'applicationId',
     rules: [{ required: true }],
     tag: provider.fieldTags.appId,
@@ -22,29 +22,27 @@ export const getLarkFormItems = (
       <FormPassword
         autoComplete="new-password"
         placeholder={
-          hasConfig
-            ? t('integration.botTokenPlaceholderExisting')
-            : t('integration.appSecretPlaceholder')
+          hasConfig ? t('channel.botTokenPlaceholderExisting') : t('channel.appSecretPlaceholder')
         }
       />
     ),
-    desc: t('integration.botTokenEncryptedHint'),
-    label: t('integration.appSecret'),
+    desc: t('channel.botTokenEncryptedHint'),
+    label: t('channel.appSecret'),
     name: 'appSecret',
     rules: [{ required: true }],
     tag: provider.fieldTags.appSecret,
   },
   {
-    children: <FormInput placeholder={t('integration.verificationTokenPlaceholder')} />,
-    desc: t('integration.verificationTokenHint'),
-    label: t('integration.verificationToken'),
+    children: <FormInput placeholder={t('channel.verificationTokenPlaceholder')} />,
+    desc: t('channel.verificationTokenHint'),
+    label: t('channel.verificationToken'),
     name: 'verificationToken',
     tag: provider.fieldTags.verificationToken,
   },
   {
-    children: <FormPassword placeholder={t('integration.encryptKeyPlaceholder')} />,
-    desc: t('integration.encryptKeyHint'),
-    label: t('integration.encryptKey'),
+    children: <FormPassword placeholder={t('channel.encryptKeyPlaceholder')} />,
+    desc: t('channel.encryptKeyHint'),
+    label: t('channel.encryptKey'),
     name: 'encryptKey',
     tag: provider.fieldTags.encryptKey,
   },

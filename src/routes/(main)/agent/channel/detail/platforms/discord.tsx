@@ -11,8 +11,8 @@ export const getDiscordFormItems = (
   provider: IntegrationProvider,
 ): FormItemProps[] => [
   {
-    children: <FormInput placeholder={t('integration.applicationIdPlaceholder')} />,
-    label: t('integration.applicationId'),
+    children: <FormInput placeholder={t('channel.applicationIdPlaceholder')} />,
+    label: t('channel.applicationId'),
     name: 'applicationId',
     rules: [{ required: true }],
     tag: provider.fieldTags.appId,
@@ -22,21 +22,19 @@ export const getDiscordFormItems = (
       <FormPassword
         autoComplete="new-password"
         placeholder={
-          hasConfig
-            ? t('integration.botTokenPlaceholderExisting')
-            : t('integration.botTokenPlaceholderNew')
+          hasConfig ? t('channel.botTokenPlaceholderExisting') : t('channel.botTokenPlaceholderNew')
         }
       />
     ),
-    desc: t('integration.botTokenEncryptedHint'),
-    label: t('integration.botToken'),
+    desc: t('channel.botTokenEncryptedHint'),
+    label: t('channel.botToken'),
     name: 'botToken',
     rules: [{ required: true }],
     tag: provider.fieldTags.token,
   },
   {
-    children: <FormInput placeholder={t('integration.publicKeyPlaceholder')} />,
-    label: t('integration.publicKey'),
+    children: <FormInput placeholder={t('channel.publicKeyPlaceholder')} />,
+    label: t('channel.publicKey'),
     name: 'publicKey',
     tag: provider.fieldTags.publicKey,
   },

@@ -89,7 +89,7 @@ const PlatformList = memo<PlatformListProps>(
     return (
       <aside className={styles.root}>
         <div className={styles.list}>
-          <div className={styles.title}>{t('integration.platforms')}</div>
+          <div className={styles.title}>{t('channel.platforms')}</div>
           {providers.map((provider) => {
             const ProviderIcon = provider.icon;
             return (
@@ -119,7 +119,7 @@ const PlatformList = memo<PlatformListProps>(
               gap: 4,
             }}
           >
-            <Icon icon={Info} size={'small'} /> {t('integration.documentation')}
+            <Icon icon={Info} size={'small'} /> {t('channel.documentation')}
           </a>
         </div>
       </aside>

@@ -32,7 +32,7 @@ export interface IntegrationProvider {
 export const INTEGRATION_PROVIDERS: IntegrationProvider[] = [
   {
     color: '#5865F2',
-    description: 'integration.discord.description',
+    description: 'channel.discord.description',
     docsLink: 'https://discord.com/developers/docs/intro',
     fieldTags: {
       appId: 'Application ID',
@@ -47,7 +47,7 @@ export const INTEGRATION_PROVIDERS: IntegrationProvider[] = [
   {
     autoAppId: true,
     color: '#26A5E4',
-    description: 'integration.telegram.description',
+    description: 'channel.telegram.description',
     docsLink: 'https://core.telegram.org/bots#how-do-i-create-a-bot',
     fieldTags: {
       appId: 'Bot User ID',
@@ -62,7 +62,7 @@ export const INTEGRATION_PROVIDERS: IntegrationProvider[] = [
   {
     authMode: 'app-secret',
     color: '#3370FF',
-    description: 'integration.feishu.description',
+    description: 'channel.feishu.description',
     docsLink:
       'https://open.feishu.cn/document/home/introduction-to-custom-app-development/self-built-application-development-process',
     fieldTags: {
@@ -79,7 +79,7 @@ export const INTEGRATION_PROVIDERS: IntegrationProvider[] = [
   {
     authMode: 'app-secret',
     color: '#3370FF',
-    description: 'integration.lark.description',
+    description: 'channel.lark.description',
     docsLink:
       'https://open.larksuite.com/document/home/introduction-to-custom-app-development/self-built-application-development-process',
     fieldTags: {

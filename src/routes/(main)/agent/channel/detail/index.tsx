@@ -170,13 +170,13 @@ const PlatformDetail = memo<PlatformDetailProps>(({ provider, agentId, currentCo
       onOk: async () => {
         try {
           await deleteBotProvider(currentConfig.id, agentId);
-          msg.success(t('integration.removed'));
+          msg.success(t('channel.removed'));
           form.resetFields();
         } catch {
-          msg.error(t('integration.removeFailed'));
+          msg.error(t('channel.removeFailed'));
         }
       },
-      title: t('integration.deleteConfirm'),
+      title: t('channel.deleteConfirm'),
     });
   }, [currentConfig, agentId, deleteBotProvider, msg, t, modal, form]);
 
@@ -186,7 +186,7 @@ const PlatformDetail = memo<PlatformDetailProps>(({ provider, agentId, currentCo
       try {
         await updateBotProvider(currentConfig.id, agentId, { enabled });
       } catch {
-        msg.error(t('integration.updateFailed'));
+        msg.error(t('channel.updateFailed'));
       }
     },
     [currentConfig, agentId, updateBotProvider, msg, t],
@@ -194,7 +194,7 @@ const PlatformDetail = memo<PlatformDetailProps>(({ provider, agentId, currentCo
 
   const handleTestConnection = useCallback(async () => {
     if (!currentConfig) {
-      msg.warning(t('integration.saveFirstWarning'));
+      msg.warning(t('channel.saveFirstWarning'));
       return;
     }
 
@@ -227,7 +227,7 @@ const PlatformDetail = memo<PlatformDetailProps>(({ provider, agentId, currentCo
         saving={saving}
         testResult={testResult}
         testing={testing}
-        onCopied={() => msg.success(t('integration.copied'))}
+        onCopied={() => msg.success(t('channel.copied'))}
         onDelete={handleDelete}
         onSave={handleSave}
         onTestConnection={handleTestConnection}
