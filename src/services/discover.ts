@@ -23,6 +23,8 @@ import {
   type DiscoverModelDetail,
   type DiscoverPluginDetail,
   type DiscoverProviderDetail,
+  type DiscoverSkillDetail,
+  type DiscoverSkillItem,
   type DiscoverUserProfile,
   type GroupAgentQueryParams,
   type IdentifiersResponse,
@@ -34,6 +36,9 @@ import {
   type PluginQueryParams,
   type ProviderListResponse,
   type ProviderQueryParams,
+  type SkillCategoryItem,
+  type SkillListResponse,
+  type SkillQueryParams,
 } from '@/types/discover';
 import { type MCPPluginListParams } from '@/types/plugins';
 import { cleanObject } from '@/utils/object';
@@ -504,6 +509,51 @@ class DiscoverService {
     }
     return null;
   }
+
+  // ============================== Skills Market ==============================
+
+  getSkillCategories = async (params: CategoryListQuery = {}): Promise<SkillCategoryItem[]> => {
+    const locale = globalHelpers.getCurrentLanguage();
+    return lambdaClient.market.skill.getSkillCategories.query({
+      ...params,
+      locale,
+    });
+  };
+
+  getSkillDetail = async (params: {
+    identifier: string;
+    locale?: string;
+    version?: string;
+  }): Promise<DiscoverSkillDetail> => {
+    const locale = globalHelpers.getCurrentLanguage();
+    return lambdaClient.market.skill.getSkillDetail.query({
+      ...params,
+      locale,
+    });
+  };
+
+  getSkillList = async (params: SkillQueryParams = {}): Promise<SkillListResponse> => {
+    const locale = globalHelpers.getCurrentLanguage();
+    return lambdaClient.market.skill.getSkillList.query({
+      ...params,
+      locale,
+      page: params.page ? Number(params.page) : 1,
+      pageSize: params.pageSize ? Number(params.pageSize) : 20,
+    });
+  };
+
+  reportSkillEvent = async (eventData: { event: string; identifier: string; source?: string }) => {
+    const allow = userGeneralSettingsSelectors.telemetry(useUserStore.getState());
+    if (!allow) return;
+
+    const payload = cleanObject({
+      ...eventData,
+      source: eventData.source ?? 'community/skill',
+    });
+
+    // Note: skill event reporting can be added when the backend supports it
+    console.debug('Skill event:', payload);
+  };
 
   // ============================== Group Agent Market ==============================
 

@@ -1,0 +1,321 @@
+'use client';
+
+import { Claude, Cline, Cursor, OpenAI, VsCode } from '@lobehub/icons';
+import { Block, Button, Flexbox, Highlighter, Icon, Markdown, Segmented, Select, Text } from '@lobehub/ui';
+import { Divider } from 'antd';
+import { createStaticStyles, cx } from 'antd-style';
+import { BotIcon, CheckIcon, CopyIcon, UserRoundIcon } from 'lucide-react';
+import { memo, useCallback, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import Title from '../../../../components/Title';
+
+type GuideMode = 'agent' | 'human';
+
+enum PlatformType {
+  Claude = 'claude',
+  Cline = 'cline',
+  Codex = 'codex',
+  Cursor = 'cursor',
+  LobeHub = 'lobehub',
+  VsCode = 'vscode',
+}
+
+export const styles = createStaticStyles(({ css }) => ({
+  lite: css`
+    pre {
+      padding: 12px !important;
+    }
+  `,
+}));
+
+interface PlatformProps {
+  downloadUrl?: string;
+  expandCodeByDefault?: boolean;
+  identifier?: string;
+  lite?: boolean;
+  mobile?: boolean;
+}
+
+const genInstallCommand = (identifier?: string, platform?: PlatformType) => {
+  const id = identifier || '<skill-identifier>';
+
+  const agentMap: Record<PlatformType, string> = {
+    [PlatformType.Claude]: 'claude-code',
+    [PlatformType.Cline]: 'cline',
+    [PlatformType.Cursor]: 'cursor',
+    [PlatformType.LobeHub]: 'lobehub',
+    [PlatformType.Codex]: 'codex',
+    [PlatformType.VsCode]: 'vscode',
+  };
+
+  switch (platform) {
+    case PlatformType.Cursor:
+    case PlatformType.Claude:
+    case PlatformType.Cline:
+    case PlatformType.VsCode: {
+      return `npx -y @lobehub/market-cli skills install ${id} --agent ${agentMap[platform]}`;
+    }
+    case PlatformType.Codex: {
+      return `npx -y @lobehub/market-cli skills install ${id} --agent ${agentMap[platform]}`;
+    }
+    default: {
+      return `# Recommended for LobeHub users:
+# Open the marketplace page and install with one click:
+# https://lobechat.com/community/skills/${id}`;
+    }
+  }
+};
+
+const genLayout = (
+  identifier: string | undefined,
+  platform: PlatformType,
+  i18nText: {
+    lobehub: string;
+    resourcesHint: string;
+  },
+) => {
+  const id = identifier || '<skill-identifier>';
+  const basePathMap: Record<PlatformType, string> = {
+    [PlatformType.Claude]: `~/.claude/skills/${id}`,
+    [PlatformType.Cline]: `~/.cline/skills/${id}`,
+    [PlatformType.Cursor]: `~/.cursor/skills/${id}`,
+    [PlatformType.LobeHub]: `<managed-by-lobehub>`,
+    [PlatformType.Codex]: `~/.agents/skills/${id}`,
+    [PlatformType.VsCode]: `./.vscode/skills/${id}`,
+  };
+  const basePath = basePathMap[platform];
+
+  if (platform === PlatformType.LobeHub) {
+    return i18nText.lobehub;
+  }
+
+  return `${basePath}
+├── SKILL.md
+└── ... (${i18nText.resourcesHint})`;
+};
+
+const Platform = memo<PlatformProps>(
+  ({ lite, identifier, mobile, expandCodeByDefault, downloadUrl }) => {
+    const { t } = useTranslation('discover');
+    const [active, setActive] = useState<PlatformType>(PlatformType.Claude);
+    const [mode, setMode] = useState<GuideMode>('agent');
+    const [copied, setCopied] = useState(false);
+
+    const options = [
+      {
+        icon: <Claude.Color className={'anticon'} size={18} />,
+        label: 'Claude Code',
+        value: PlatformType.Claude,
+      },
+      {
+        icon: <OpenAI className={'anticon'} size={18} />,
+        label: 'Codex',
+        value: PlatformType.Codex,
+      },
+      {
+        icon: <Cursor className={'anticon'} size={18} />,
+        label: 'Cursor',
+        value: PlatformType.Cursor,
+      },
+      {
+        icon: <VsCode className={'anticon'} size={18} />,
+        label: 'VsCode',
+        value: PlatformType.VsCode,
+      },
+      {
+        icon: <Cline className={'anticon'} size={18} />,
+        label: 'Cline',
+        value: PlatformType.Cline,
+      },
+    ];
+
+    const { platform, steps } = useMemo(() => {
+      switch (active) {
+        case PlatformType.LobeHub: {
+          return {
+            platform: 'LobeHub',
+            steps: t('skills.details.sidebar.platform.steps.lobehub'),
+          };
+        }
+        case PlatformType.Claude: {
+          return {
+            platform: 'Claude',
+            steps: t('skills.details.sidebar.platform.steps.claude'),
+          };
+        }
+        case PlatformType.Codex: {
+          return {
+            platform: 'Codex',
+            steps: t('skills.details.sidebar.platform.steps.codex'),
+          };
+        }
+        case PlatformType.Cursor: {
+          return {
+            platform: 'Cursor',
+            steps: t('skills.details.sidebar.platform.steps.cursor'),
+          };
+        }
+        case PlatformType.Cline: {
+          return {
+            platform: 'Cline',
+            steps: t('skills.details.sidebar.platform.steps.cline'),
+          };
+        }
+        case PlatformType.VsCode: {
+          return {
+            platform: 'VS Code',
+            steps: t('skills.details.sidebar.platform.steps.vscode'),
+          };
+        }
+      }
+    }, [active, t]);
+
+    const command = genInstallCommand(identifier, active);
+
+    const agentPrompt = `Curl https://lobehub.com/skills/${identifier}/skill.md, then follow the instructions to set up LobeHub Skills Marketplace and install the skill. Once installed, read the SKILL.md file in the installed directory and follow its instructions to complete the task.`;
+
+    const handleCopyPrompt = useCallback(() => {
+      navigator.clipboard.writeText(agentPrompt);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }, [agentPrompt]);
+
+    return (
+      <Block gap={lite ? 0 : 16} padding={4} variant={lite ? 'outlined' : 'borderless'}>
+        <Segmented
+          block
+          onChange={(value) => setMode(value as GuideMode)}
+          options={[
+            {
+              icon: <Icon icon={BotIcon} />,
+              label: t('skills.hero.guide.agent'),
+              value: 'agent',
+            },
+            {
+              icon: <Icon icon={UserRoundIcon} />,
+              label: t('skills.hero.guide.human'),
+              value: 'human',
+            },
+          ]}
+          style={{ marginBottom: 8 }}
+          value={mode}
+          variant={'filled'}
+        />
+
+        {mode === 'agent' ? (
+          <Flexbox gap={mobile || lite ? 0 : 16}>
+            {mobile || lite ? (
+              <Text align={'center'} as={'h3'} fontSize={14} style={{ padding: 8 }} weight={500}>
+                {t('skills.details.sidebar.agent.title')}
+              </Text>
+            ) : (
+              <Title level={3}>{t('skills.details.sidebar.agent.title')}</Title>
+            )}
+            <Highlighter
+              className={cx(lite && styles.lite)}
+              defaultExpand={expandCodeByDefault ?? false}
+              fileName={'Agent prompt'}
+              fullFeatured
+              language={'bash'}
+              style={{ fontSize: 12 }}
+              variant={lite ? 'borderless' : 'outlined'}
+              wrap
+            >
+              {agentPrompt}
+            </Highlighter>
+            <Flexbox padding={8}>
+              <Button
+                block
+                icon={<Icon icon={copied ? CheckIcon : CopyIcon} />}
+                onClick={handleCopyPrompt}
+                size={'large'}
+                type={'primary'}
+              >
+                {copied
+                  ? t('skills.details.sidebar.agent.copied')
+                  : t('skills.details.sidebar.agent.copyPrompt')}
+              </Button>
+            </Flexbox>
+          </Flexbox>
+        ) : (
+          <>
+            {mobile || lite ? (
+              <Select
+                onSelect={(v) => setActive(v as PlatformType)}
+                options={options.map((item) => ({
+                  ...item,
+                  label: (
+                    <Flexbox align={'center'} gap={8} horizontal>
+                      {item.icon} {item.label}
+                    </Flexbox>
+                  ),
+                }))}
+                value={active}
+                variant={'filled'}
+              />
+            ) : (
+              <Segmented
+                block
+                onChange={(v) => setActive(v as PlatformType)}
+                options={options}
+                value={active}
+              />
+            )}
+            <Flexbox>
+              {!lite && (
+                <Title level={3}>{t('skills.details.sidebar.platform.title', { platform })}</Title>
+              )}
+              <Markdown variant={'chat'}>{steps}</Markdown>
+            </Flexbox>
+            {lite && <Divider dashed style={{ margin: 0 }} />}
+            <Highlighter
+              className={cx(lite && styles.lite)}
+              defaultExpand={expandCodeByDefault ?? false}
+              fileName={t('skills.details.sidebar.installCommand')}
+              fullFeatured
+              language={'bash'}
+              style={{ fontSize: 12 }}
+              variant={lite ? 'borderless' : 'outlined'}
+            >
+              {command}
+            </Highlighter>
+            {lite && <Divider dashed style={{ margin: 0 }} />}
+            <Highlighter
+              className={cx(lite && styles.lite)}
+              defaultExpand={false}
+              fileName={t('skills.details.sidebar.directoryLayout')}
+              fullFeatured
+              language={'text'}
+              style={{ fontSize: 12 }}
+              variant={lite ? 'borderless' : 'outlined'}
+            >
+              {genLayout(identifier, active, {
+                lobehub: t('skills.details.sidebar.platform.layout.lobehub'),
+                resourcesHint: t('skills.details.sidebar.platform.layout.resourcesHint'),
+              })}
+            </Highlighter>
+            {downloadUrl && (
+              <>
+                <Divider dashed style={{ margin: 0 }} />
+                <Flexbox padding={8}>
+                  <Button
+                    block
+                    href={downloadUrl}
+                    size={'large'}
+                    target={'_blank'}
+                    type={'primary'}
+                  >
+                    {t('plugins.download')}
+                  </Button>
+                </Flexbox>
+              </>
+            )}
+          </>
+        )}
+      </Block>
+    );
+  },
+);
+
+export default Platform;

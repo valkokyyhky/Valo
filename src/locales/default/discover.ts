@@ -865,6 +865,160 @@ export default {
 
   'search.searching': 'Searching...',
 
+  'skillEmpty.description': 'Try adjusting filters or searching with different keywords.',
+
+  'skillEmpty.search': 'No matching Skills found',
+
+  'skillEmpty.title': 'No Skills found',
+
+  'skills.categories.all.description': 'All Skills',
+
+  'skills.categories.all.name': 'All',
+
+  'skills.categories.business.description': 'Business and Enterprise Services',
+
+  'skills.categories.business.name': 'Business Services',
+
+  'skills.categories.developer.description': 'Developer-related Tools and Services',
+
+  'skills.categories.developer.name': 'Developer Tools',
+
+  'skills.categories.gaming-entertainment.description': 'Games, Entertainment, and Leisure Activities',
+
+  'skills.categories.gaming-entertainment.name': 'Gaming & Entertainment',
+
+  'skills.categories.health-wellness.description': 'Health, Fitness, and Wellness',
+
+  'skills.categories.health-wellness.name': 'Health & Wellness',
+
+  'skills.categories.lifestyle.description': 'Personal Lifestyle, Habits, and Daily Activities',
+
+  'skills.categories.lifestyle.name': 'Lifestyle',
+
+  'skills.categories.media-generate.description': 'Media Generation, Editing, and Processing',
+
+  'skills.categories.media-generate.name': 'Media Generation',
+
+  'skills.categories.news.description': 'News Aggregation, Reporting, and Information Services',
+
+  'skills.categories.news.name': 'News & Information',
+
+  'skills.categories.productivity.description': 'Task Management, Notes, and Productivity Tools',
+
+  'skills.categories.productivity.name': 'Productivity Tools',
+
+  'skills.categories.science-education.description': 'Scientific Research, Learning, and Educational Tools',
+
+  'skills.categories.science-education.name': 'Science & Education',
+
+  'skills.categories.social.description': 'Social Networks and Communication',
+
+  'skills.categories.social.name': 'Social Media',
+
+  'skills.categories.stocks-finance.description': 'Financial Markets, Trading, and Investment',
+
+  'skills.categories.stocks-finance.name': 'Stocks & Finance',
+
+  'skills.categories.tools.description': 'General-purpose Practical Tools and Services',
+
+  'skills.categories.tools.name': 'Utility Tools',
+
+  'skills.categories.travel-transport.description': 'Travel Planning and Transportation',
+
+  'skills.categories.travel-transport.name': 'Travel & Transport',
+
+  'skills.categories.weather.description': 'Weather Forecasting and Meteorological Services',
+
+  'skills.categories.weather.name': 'Weather',
+
+  'skills.categories.web-search.description': 'Web Search and Information Retrieval',
+
+  'skills.categories.web-search.name': 'Information Retrieval',
+
+  'skills.details.nav.needHelp': 'Need Help?',
+
+  'skills.details.nav.reportIssue': 'Report Issue',
+
+  'skills.details.nav.viewSourceCode': 'View Source Code',
+
+  'skills.details.overview.title': 'Overview',
+
+  'skills.details.rating.title': 'Ratings',
+
+  'skills.details.related.empty': 'No related Skills yet',
+
+  'skills.details.related.listTitle': 'Related Skills',
+
+  'skills.details.related.more': 'View More',
+
+  'skills.details.related.title': 'Related Skills',
+
+  'skills.details.resources.empty': 'No resources available',
+
+  'skills.details.resources.table.name': 'Name',
+
+  'skills.details.resources.table.size': 'Size',
+
+  'skills.details.resources.title': 'Resources',
+
+  'skills.details.review.title': 'How to Submit a Review',
+
+  'skills.details.sidebar.agent.copied': 'Prompt Copied',
+
+  'skills.details.sidebar.agent.copyPrompt': 'Copy Prompt',
+
+  'skills.details.sidebar.agent.title': 'Send this prompt to your Agent to install this Skill',
+
+  'skills.details.sidebar.description': 'Description',
+
+  'skills.details.sidebar.details': 'Details',
+
+  'skills.details.sidebar.directoryLayout': 'Directory Layout',
+
+  'skills.details.sidebar.downloadSkill': 'Download Skill',
+
+  'skills.details.sidebar.files': 'File Tree',
+
+  'skills.details.sidebar.installationConfig': 'Installation',
+
+  'skills.details.sidebar.installCommand': 'Install Command',
+
+  'skills.details.sidebar.platform.layout.lobehub': 'Skills are managed by LobeHub automatically',
+
+  'skills.details.sidebar.platform.layout.resourcesHint': 'other resources',
+
+  'skills.details.sidebar.platform.steps.claude': 'Run the install command in your terminal to download and configure this skill for Claude Code.',
+
+  'skills.details.sidebar.platform.steps.cline': 'Run the install command in your terminal to download and configure this skill for Cline.',
+
+  'skills.details.sidebar.platform.steps.codex': 'Run the install command in your terminal to download and configure this skill for Codex.',
+
+  'skills.details.sidebar.platform.steps.cursor': 'Run the install command in your terminal to download and configure this skill for Cursor.',
+
+  'skills.details.sidebar.platform.steps.lobehub': 'Install directly from the LobeHub marketplace with one click.',
+
+  'skills.details.sidebar.platform.steps.vscode': 'Run the install command in your terminal to download and configure this skill for VS Code.',
+
+  'skills.details.sidebar.platform.title': 'Install on {{platform}}',
+
+  'skills.details.sidebar.tags': 'Tags',
+
+  'skills.details.summary.title': 'Summary',
+
+  'skills.details.versions.empty': 'No historical versions yet',
+
+  'skills.details.versions.table.isLatest': 'Latest',
+
+  'skills.details.versions.table.publishAt': 'Published',
+
+  'skills.details.versions.table.version': 'Version',
+
+  'skills.details.versions.title': 'Version History',
+
+  'skills.hero.guide.agent': 'I am Agent',
+
+  'skills.hero.guide.human': 'I am Human',
+
   'tab.assistant': 'Agent',
 
   'tab.home': 'Home',
@@ -874,6 +1028,8 @@ export default {
   'tab.plugin': 'Skill',
 
   'tab.provider': 'Provider',
+
+  'tab.skill': 'Skills',
 
   'tab.user': 'User',
 
