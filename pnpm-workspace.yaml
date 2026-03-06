@@ -2,6 +2,7 @@ packages:
   - packages/**
   - .
   - e2e
+  - apps/cli
   - apps/desktop/src/main
 
 onlyBuiltDependencies:
