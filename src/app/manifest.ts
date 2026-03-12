@@ -6,8 +6,8 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: 'LobeHub',
     start_url: '/',
     display: 'standalone',
-    background_color: '#000000',
-    theme_color: '#000000',
+    background_color: '#f8f8f8',
+    theme_color: '#f8f8f8',
     icons: [
       {
         src: '/icons/icon-192x192.png',
