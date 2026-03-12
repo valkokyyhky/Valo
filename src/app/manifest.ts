@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'LobeHub',
-    short_name: 'LobeHub',
+    name: 'Valo',
+    short_name: 'Valo',
     start_url: '/',
     display: 'standalone',
     background_color: '#f8f8f8',
