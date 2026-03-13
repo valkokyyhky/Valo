@@ -2,8 +2,8 @@ export default {
   'changelog.description': 'Stay updated on the new features and improvements of {{appName}}',
   'changelog.title': 'Changelog',
   'chat.description':
-    '{{appName}} is a work-and-lifestyle space to find, build, and collaborate with agent teams that grow with you.',
-  'chat.title': '{{appName}} · Agent teammates that grow with you',
+    '{{appName}} is a personal AI space for Valko, built with intention, curiosity, and a little stardust. ',
+  'chat.title': '{{appName}} · A soft universe where Valo lives ',
   'discover.assistants.description':
     'Content, Q&A, images, video, voice, workflows—browse and add Agents from the Community.',
   'discover.assistants.title': 'Agent Community',
