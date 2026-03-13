@@ -18,5 +18,18 @@ export const ProductLogo = memo<ProductLogoProps>((props) => {
     return <CustomLogo {...props} />;
   }
 
-  return <LobeHub {...props} />;
+  return (
+    <span
+      style={{
+        fontWeight: 700,
+        fontSize: 18,
+        letterSpacing: 0.6,
+        display: 'flex',
+        alignItems: 'center',
+        gap: 6
+      }}
+    >
+      🌙 Valo
+    </span>
+  );
 });
