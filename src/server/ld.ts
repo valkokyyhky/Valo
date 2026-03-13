@@ -94,8 +94,8 @@ export class Ld {
         'email': BRANDING_EMAIL.support,
       },
       'description':
-        'Agent teammates that grow with you\n' +
-        'LobeHub is a work-and-lifestyle space to find, build, and collaborate with agent teams that grow with you.',
+        '🌙 Valko\'s AI Workshop\n' +
+        'A soft universe where Valo lives — personal AI space for Valko, built with intention, curiosity, and a little stardust. ',
       'email': BRANDING_EMAIL.business,
       'founders': [this.getAuthors(['arvinxx']), this.getAuthors(['canisminor'])],
       'image': urlJoin(OFFICIAL_SITE, '/icon-512x512.png'),
