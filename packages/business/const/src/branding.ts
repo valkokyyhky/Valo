@@ -7,7 +7,7 @@ export const LOBE_CHAT_CLOUD = 'Valo Cloud';
 export const BRANDING_NAME = 'Valo';
 export const BRANDING_LOGO_URL = '/icons/icon-192x192.png';
 
-export const ORG_NAME = 'Valo';
+export const ORG_NAME = '🌙Valo';
 
 export const BRANDING_URL = {
   help: undefined,
