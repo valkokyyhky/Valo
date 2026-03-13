@@ -205,7 +205,7 @@ export default {
   'profile.usernameRule': 'Username can only contain letters, numbers, or underscores',
   'profile.usernameTooLong': 'Username cannot exceed 64 characters',
   'profile.usernameUpdateFailed': 'Failed to update username, please try again later',
-  'signin.subtitle': 'Sign up or log in to your {{appName}} account',
+  'signin.subtitle': 'Hi, Valko!😊 How\'s your day today?',
   'signin.title': '🌙 Valko\'s AI Workshop',
   'signout': 'Log Out',
   'signup': 'Sign Up',
