@@ -6,7 +6,6 @@ import { MessageSquarePlus } from 'lucide-react';
 import { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { ProductLogo } from '@/components/Branding';
 import { MOBILE_HEADER_ICON_SIZE } from '@/const/layoutTokens';
 import UserAvatar from '@/features/User/UserAvatar';
 import { useSessionStore } from '@/store/session';
@@ -24,7 +23,15 @@ const Header = memo(() => {
       left={
         <Flexbox horizontal align={'center'} className={styles.leftContainer} gap={8}>
           <UserAvatar size={32} onClick={() => navigate('/me')} />
-          <ProductLogo type={'text'} />
+          {/* 直接硬编码，不用 ProductLogo */}
+          <span style={{ 
+            fontWeight: 600, 
+            fontSize: 18, 
+            color: '#6A735C',
+            letterSpacing: '0.5px'
+          }}>
+            Valo
+          </span>
         </Flexbox>
       }
       right={
