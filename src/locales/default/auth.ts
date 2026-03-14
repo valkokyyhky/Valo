@@ -97,7 +97,7 @@ export default {
   'betterAuth.signin.noAccount': "Don't have an account?",
   'betterAuth.signin.orContinueWith': 'OR',
   'betterAuth.signin.passwordPlaceholder': 'Enter your password',
-  'betterAuth.signin.passwordStep.subtitle': 'Enter your password to continue',
+  'betterAuth.signin.passwordStep.subtitle': 'What\'s on your mind?✨',
   'betterAuth.signin.setPassword': 'set a password',
   'betterAuth.signin.signupLink': 'Sign up now',
   'betterAuth.signin.socialError': 'Social sign in failed, please try again',
