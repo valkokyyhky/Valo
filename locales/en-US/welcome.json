@@ -2,7 +2,7 @@
   "guide.agents.replaceBtn": "Refresh",
   "guide.agents.title": "New Agent Recommendations:",
   "guide.defaultMessage": "I’m your Agent {{appName}}. Start with any idea.<br />Need a more specialized Agent? Click <plus /> to create one.",
-  "guide.defaultMessageWithoutCreate": "Welcome to {{appName}}. One sentence is enough—just state your goal.",
+  "guide.defaultMessageWithoutCreate": "Welcome to {{appName}}. What's on your mind today?☀️⛅️🌙",
   "guide.groupActivities.analysis.codeReview.description": "Technical discussions and peer reviews of code changes and implementations",
   "guide.groupActivities.analysis.codeReview.emoji": "💻",
   "guide.groupActivities.analysis.codeReview.prompt": "Let's review some code together. Can you help us analyze it and identify areas for improvement?",
