@@ -74,36 +74,34 @@
       })();
     </script>
     <div id="loading-screen">
-      <div id="loading-brand" aria-label="Loading" role="status" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-        <!-- 你的 Logo -->
-        <img 
-          src="/icons/icon-192x192.png" 
-          alt="Valo" 
-          style="width: 64px; height: 64px; animation: float 2s ease-in-out infinite;"
-        />
-        <!-- 加载文字 -->
-        <div style="display: flex; gap: 4px; font-size: 16px; color: var(--color-text, #666);">
-          <span style="animation: dot 1.4s ease-in-out infinite">l</span>
-          <span style="animation: dot 1.4s ease-in-out infinite 0.2s">o</span>
-          <span style="animation: dot 1.4s ease-in-out infinite 0.4s">a</span>
-          <span style="animation: dot 1.4s ease-in-out infinite 0.6s">d</span>
-          <span style="animation: dot 1.4s ease-in-out infinite 0.8s">i</span>
-          <span style="animation: dot 1.4s ease-in-out infinite 1.0s">n</span>
-          <span style="animation: dot 1.4s ease-in-out infinite 1.2s">g</span>
-          <span style="margin-left: 4px; animation: dot 1.4s ease-in-out infinite 1.4s">...</span>
+      <div id="loading-brand" aria-label="Loading" role="status">
+        <div style="display: flex; gap: 4px; font-family: 'ManifestFont', Georgia, serif; color: #6A735C;">
+          <span style="font-size: 72px; animation: dot 1.4s ease-in-out infinite">V</span>
+          <span style="font-size: 72px; animation: dot 1.4s ease-in-out infinite 0.2s">a</span>
+          <span style="font-size: 72px; animation: dot 1.4s ease-in-out infinite 0.4s">l</span>
+          <span style="font-size: 72px; animation: dot 1.4s ease-in-out infinite 0.6s">o</span>
         </div>
       </div>
     </div>
     
     <style>
-      @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-8px); }
+      @font-face {
+        font-family: 'ManifestFont';
+        src: url('/fonts/Manifest_Creativity.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
       }
       
       @keyframes dot {
-        0%, 100% { opacity: 0.2; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.1); }
+        0%, 100% { 
+          opacity: 0.3; 
+          transform: translateY(0);
+        }
+        50% { 
+          opacity: 1; 
+          transform: translateY(-8px);
+        }
       }
     </style>
     <div id="root" style="height: 100%;"></div>
