@@ -4,7 +4,7 @@ export default {
   'guide.defaultMessage':
     'I’m your Agent {{appName}}. Start with any idea.<br />Need a more specialized Agent? Click <plus /> to create one.',
   'guide.defaultMessageWithoutCreate':
-    'Welcome to {{appName}}. One sentence is enough—just state your goal.',
+    'Welcome to {{appName}}. What's on your mind today?☀️⛅️🌙',
   'guide.groupActivities.analysis.codeReview.description':
     'Technical discussions and peer reviews of code changes and implementations',
   'guide.groupActivities.analysis.codeReview.emoji': '💻',
